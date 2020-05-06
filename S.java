@@ -29,6 +29,11 @@ import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 
+/*
+ * Esta clase es la más enredada y menos documentada de las 3 pero no es casualidad.
+ * Aquí lo que hay son los métodos de criptografía en general
+ * no tendremos que modificar nada de aquí
+ */
 public class S {
 	public static final String DES = "DES";
 	public static final String AES = "AES";
@@ -42,6 +47,9 @@ public class S {
 	public static final String HMACSHA384 = "HMACSHA384";
 	public static final String HMACSHA512 = "HMACSHA512";
 	
+	/*
+	 * Método para cifrar con llave simétrica
+	 */
 	public static byte[] se (byte[] msg, Key key , String algo)
 			throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, 
 			NoSuchAlgorithmException, NoSuchPaddingException {
@@ -52,6 +60,9 @@ public class S {
 		return decifrador.doFinal(msg);
 	}
 	
+	/*
+	 * Método para descifrar con llave asimétrica
+	 */
 	public static byte[] sd (byte[] msg, Key key , String algo)
 			throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, 
 			NoSuchAlgorithmException, NoSuchPaddingException {
@@ -62,6 +73,9 @@ public class S {
 		return decifrador.doFinal(msg);
 	}
 	
+	/*
+	 * Método para cifrar con llave asímetrica
+	 */
 	public static byte[] ae (byte[] msg, Key key , String algo) 
 			throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, 
 			NoSuchAlgorithmException, NoSuchPaddingException {
@@ -70,6 +84,9 @@ public class S {
 		return decifrador.doFinal(msg);
 	}
 	
+	/*
+	 * Método para descifrar con llave simétrica
+	 */
 	public static byte[] ad (byte[] msg, Key key , String algo) 
 			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, 
 			IllegalBlockSizeException, BadPaddingException {
@@ -77,7 +94,10 @@ public class S {
 		decifrador.init(Cipher.DECRYPT_MODE, key); 
 		return decifrador.doFinal(msg);
 	}
-
+	
+	/*
+	 * Se crea el HMAC para verificar
+	 */
 	public static byte[] hdg (byte[] msg, Key key, String algo) throws NoSuchAlgorithmException,
 			InvalidKeyException, IllegalStateException, UnsupportedEncodingException {
 		Mac mac = Mac.getInstance(algo);
@@ -87,6 +107,9 @@ public class S {
 		return bytes;
 	}
 	
+	/*
+	 * Se verifica el HMAC a partir del mensaje, la llave, el algoritmo y el mismo hash que recibió
+	 */
 	public static boolean vi(byte[] msg, Key key, String algo, byte [] hash ) throws Exception
 	{
 		byte [] nuevo = hdg(msg, key, algo);
@@ -99,6 +122,9 @@ public class S {
 		return true;
 	}
 
+	/*
+	 * Generador de la llave simétrica
+	 */
 	public static SecretKey kgg(String algoritmo) 
 			throws NoSuchAlgorithmException, NoSuchProviderException	{
 		int tamLlave = 0;
@@ -120,13 +146,19 @@ public class S {
 		key = keyGen.generateKey();
 		return key;
 	}
-		
+	
+	/*
+	 * Generador de la llave privada  (encriptación asimétrica)
+	 */
 	public static KeyPair grsa() throws NoSuchAlgorithmException {
 		KeyPairGenerator kpGen = KeyPairGenerator.getInstance(RSA);
 		kpGen.initialize(1024, new SecureRandom());
 		return kpGen.generateKeyPair();
 	}	
 
+	/*
+	 * Generador del certificado x509, obvio bobis
+	 */
 	public static X509Certificate gc(KeyPair keyPair)
 	        throws OperatorCreationException, CertificateException {
 	  Calendar endCalendar = Calendar.getInstance();

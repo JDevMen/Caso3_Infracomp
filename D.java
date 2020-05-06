@@ -16,8 +16,13 @@ import java.util.Random;
 import javax.crypto.SecretKey;
 import javax.xml.bind.DatatypeConverter;
 
+/*
+ * En esta clase se define el protocolo con el que se comunica el servidor 
+ * con el cliente. 
+ * Ante todo es la estructura del thread delegado.
+ */
 public class D extends Thread {
-
+	// Constantes de respuesta 
 	public static final String OK = "OK";
 	public static final String ALGORITMOS = "ALGORITMOS";
 	public static final String CERTSRV = "CERTSRV";
@@ -38,13 +43,18 @@ public class D extends Thread {
 	private static File file;
 	public static final int numCadenas = 13;
 
-	
+	//Define lo básico del servidor para manejar criptografía con el cliente
 	public static void init(X509Certificate pCertSer, KeyPair pKeyPairServidor, File pFile) {
 		certSer = pCertSer;
 		keyPairServidor = pKeyPairServidor;
 		file = pFile;
 	}
 	
+	/*
+	 * Método principal para iniciar el thread, recibe el socket por el cual
+	 * se va a comunidar y un id que lo identifique (asignado por el servidor)
+	 * Abrá que hacer ajustes para que el log quede por bloques de cada delegado
+	 */
 	public D (Socket csP, int idP) {
 		sc = csP;
 		dlg = new String("delegado " + idP + ": ");
@@ -57,6 +67,7 @@ public class D extends Thread {
 		}
 	}
 	
+	//Solo revisa si la respuesta corresponde a un HMAC valido
 	private boolean validoAlgHMAC(String nombre) {
 		return ((nombre.equals(S.HMACMD5) || 
 			 nombre.equals(S.HMACSHA1) ||
@@ -72,6 +83,7 @@ public class D extends Thread {
 	 * - Debe conservar el metodo . 
 	 * - Es el ÃƒÂºnico metodo permitido para escribir en el log.
 	 */
+	//Tal cual, este método lo único que hace es escribir sobre el log.
 	private void escribirMensaje(String pCadena) {
 		
 		try {
@@ -84,6 +96,12 @@ public class D extends Thread {
 
 	}
 	
+	/*
+	 * Método run, tu deberías acordarte pero sino lo que tiene es el hilo de 
+	 * ejecución del thread. Básicamente como va a ejecutar los demás métodos
+	 * (non-Javadoc)
+	 * @see java.lang.Thread#run()
+	 */
 	public void run() {
 		String[] cadenas;
 		cadenas = new String[numCadenas];
@@ -97,6 +115,7 @@ public class D extends Thread {
 				BufferedReader dc = new BufferedReader(new InputStreamReader(sc.getInputStream()));
 
 				/***** Fase 1:  *****/
+				//Esta es la parte de conexión inicial con el cliente
 				linea = dc.readLine();
 				if (!linea.equals(HOLA)) {
 					ac.println(ERROR);
@@ -109,6 +128,9 @@ public class D extends Thread {
 				}
 				
 				/***** Fase 2:  *****/
+				/* Empieza lo bueno, recibe los algoritmos para llaves
+				 * simétrica, asimétrica y el hash
+				 */
 				linea = dc.readLine();
 				if (!(linea.contains(SEPARADOR) && linea.split(SEPARADOR)[0].equals(ALGORITMOS))) {
 					ac.println(ERROR);
@@ -116,6 +138,7 @@ public class D extends Thread {
 					throw new Exception(dlg + ERROR + REC + linea +"-terminando.");
 				}
 				
+				//Acuerdo de algoritmo simétrico
 				String[] algoritmos = linea.split(SEPARADOR);
 				if (!algoritmos[1].equals(S.DES) && !algoritmos[1].equals(S.AES) &&
 					!algoritmos[1].equals(S.BLOWFISH) && !algoritmos[1].equals(S.RC4)){
@@ -123,11 +146,13 @@ public class D extends Thread {
 					sc.close();
 					throw new Exception(dlg + ERROR + "Alg.Simetrico" + REC + algoritmos + "-terminando.");
 				}
+				//Acuerdo de algoritmo asimétrico
 				if (!algoritmos[2].equals(S.RSA) ) {
 					ac.println(ERROR);
 					sc.close();
 					throw new Exception(dlg + ERROR + "Alg.Asimetrico." + REC + algoritmos + "-terminando.");
 				}
+				//Acuerdo de algoritmo de HMAC
 				if (!validoAlgHMAC(algoritmos[3])) {
 					ac.println(ERROR);
 					sc.close();
@@ -152,6 +177,12 @@ public class D extends Thread {
 				ac.println(OK);
 				cadenas[4] = dlg + ENVIO + OK + "-continuando.";
 				System.out.println(cadenas[4]);
+				
+				/*
+				 * De aquí en adelante las fases son claras,
+				 * si algo te confunde revisa el protocolo del caso 2
+				 */
+				
 				
 				/***** Fase 4: Envia certificado del servidor *****/
 				String strSerCert = toHexString(mybyte);

@@ -10,7 +10,14 @@ import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
 
-
+/*
+ * Clase principal, esta es la clase que tiene el ejecutable
+ * Aquí se genera inicializa el puerto que va a usar para comunicarse
+ * Además, aquí es que se generan los threads delegados, cada uno atiende 
+ * a solo un cliente de inicio a fin.
+ * Por el momento trabaja como un for infinito que crea delegados a medida que
+ * van llegando clientes
+ */
 public class C {
 	private static ServerSocket ss;	
 	private static final String MAESTRO = "MAESTRO: ";
@@ -21,7 +28,8 @@ public class C {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
+		// Se inicializa el reader y el writer, además define el puerto de comunicación
+		
 
 		System.out.println(MAESTRO + "Establezca puerto de conexion:");
 		InputStreamReader isr = new InputStreamReader(System.in);
@@ -50,6 +58,12 @@ public class C {
 		ss = new ServerSocket(ip);
 		System.out.println(MAESTRO + "Socket creado.");
         
+		
+		/*(
+		 * Aquí se crean los threads delegados. 
+		 * Esto lo tenemos que modificar para que sea un pool de threads
+		 * como en el CASO 1
+		 */
 		for (int i=0;true;i++) {
 			try { 
 				Socket sc = ss.accept();

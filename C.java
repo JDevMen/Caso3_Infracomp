@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -72,18 +73,18 @@ public class C {
 		//			listaServDelegados.add(d);
 		//		}
 
-		ThreadPoolExecutor deadpools = (ThreadPoolExecutor)Executors.newFixedThreadPool(cantServidores);
+		ThreadPoolExecutor deadpools = (ThreadPoolExecutor) Executors.newFixedThreadPool(cantServidores);
 
 		/*
 		 * Aquí estoy poniendo el ciclo para aceptar conexiones a los servidores delegados
 		 */
-		while(true)
+		for(int i= 0 ; true; i++)
 		{
 			try { 
 				Socket sc = ss.accept();
-				D dingo = new D(sc);
+				D dingo = new D(sc,i);
 				deadpools.execute(dingo);
-				System.out.println(MAESTRO + "Cliente" + dingo.getId() + "aceptado.");
+				System.out.println(MAESTRO + "Cliente "  + "aceptado.");
 
 			} catch (IOException e) {
 				System.out.println(MAESTRO + "Error creando el socket cliente.");

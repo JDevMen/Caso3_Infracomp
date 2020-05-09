@@ -21,7 +21,7 @@ import javax.xml.bind.DatatypeConverter;
  * con el cliente. 
  * Ante todo es la estructura del thread delegado.
  */
-public class D extends Thread {
+public class D implements Runnable {
 	// Constantes de respuesta 
 	public static final String OK = "OK";
 	public static final String ALGORITMOS = "ALGORITMOS";
@@ -42,6 +42,7 @@ public class D extends Thread {
 	private static KeyPair keyPairServidor;
 	private static File file;
 	public static final int numCadenas = 13;
+	private long id = 0;
 
 	//Cambiar socket del servidor delegado
 	public void cambiarSocket(Socket pSc)
@@ -67,8 +68,11 @@ public class D extends Thread {
 	 * se va a comunidar y un id que lo identifique (asignado por el servidor)
 	 * Abrá que hacer ajustes para que el log quede por bloques de cada delegado
 	 */
-	public D (Socket csP, int idP) {
+	public D (Socket csP) {
 		sc = csP;
+		long idP = Thread.currentThread().getId();
+		System.out.println("LLEGUE UNA VEZ " + idP);
+		this.id = idP;
 		dlg = new String("delegado " + idP + ": ");
 		try {
 		mybyte = new byte[520]; 
@@ -79,6 +83,14 @@ public class D extends Thread {
 		}
 	}
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	//Solo revisa si la respuesta corresponde a un HMAC valido
 	private boolean validoAlgHMAC(String nombre) {
 		return ((nombre.equals(S.HMACMD5) || 
@@ -118,7 +130,6 @@ public class D extends Thread {
 		String[] cadenas;
 		cadenas = new String[numCadenas];
 
-		String feedback;
 		String linea;
 	    System.out.println(dlg + "Empezando atencion.");
 	        try {

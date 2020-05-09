@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry excluding="src/" kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Caso2_infracomp/bcprov-jdk15on-161.jar"/>
-	<classpathentry kind="lib" path="/Caso2_infracomp/bcpkix-jdk15on-161.jar"/>
+	<classpathentry kind="lib" path="bcpkix-jdk15on-161.jar"/>
+	<classpathentry kind="lib" path="bcprov-jdk15on-161.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

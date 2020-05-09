@@ -9,7 +9,8 @@ import java.net.Socket;
 import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
-import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /*
  * Clase principal, esta es la clase que tiene el ejecutable
@@ -24,7 +25,7 @@ public class C {
 	private static final String MAESTRO = "MAESTRO: ";
 	private static X509Certificate certSer; /* acceso default */
 	private static KeyPair keyPairServidor; /* acceso default */
-	
+
 	/**
 	 * @param args
 	 */
@@ -45,52 +46,44 @@ public class C {
 		keyPairServidor = S.grsa();
 		certSer = S.gc(keyPairServidor); 
 		String ruta = "./resultados.txt";
-		   
-        file = new File(ruta);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        FileWriter fw = new FileWriter(file);
-        fw.close();
 
-        D.init(certSer, keyPairServidor,file);
-        
+		file = new File(ruta);
+		if (!file.exists()) {
+			file.createNewFile();
+		}
+		FileWriter fw = new FileWriter(file);
+		fw.close();
+
+		D.init(certSer, keyPairServidor,file);
+
 		// Crea el socket que escucha en el puerto seleccionado.
 		ss = new ServerSocket(ip);
 		System.out.println(MAESTRO + "Socket creado.");
-        
-		
-		ArrayList<D> listaServDelegados = new ArrayList<>();
-		
+
+
+
 		/*
 		 * Ciclo para crear los servidores delegados
 		 */
-		
-		for (int i = 0; i < cantServidores-1; i++) 
-		{
-			D d = new D(null,i);
-			listaServDelegados.add(d);
-		}
-		
+
+		//		for (int i = 0; i < cantServidores-1; i++) 
+		//		{
+		//			D d = new D(null,i);
+		//			listaServDelegados.add(d);
+		//		}
+
+		ThreadPoolExecutor deadpools = (ThreadPoolExecutor)Executors.newFixedThreadPool(cantServidores);
+
 		/*
 		 * Aquí estoy poniendo el ciclo para aceptar conexiones a los servidores delegados
 		 */
 		while(true)
 		{
 			try { 
-				boolean aceptado = false;
 				Socket sc = ss.accept();
-				for (int i = 0; i < listaServDelegados.size() && !aceptado; i++) 
-				{
-					D delegado = listaServDelegados.get(i);
-					if(delegado.noHaySocket())
-					{
-						System.out.println(MAESTRO + "Cliente " + i + " aceptado.");
-						delegado.cambiarSocket(sc);
-						delegado.run();
-						aceptado = true;
-					}
-				}
+				D dingo = new D(sc);
+				deadpools.execute(dingo);
+				System.out.println(MAESTRO + "Cliente" + dingo.getId() + "aceptado.");
 
 			} catch (IOException e) {
 				System.out.println(MAESTRO + "Error creando el socket cliente.");
@@ -102,19 +95,19 @@ public class C {
 		 * Esto lo tenemos que modificar para que sea un pool de threads
 		 * como en el CASO 1
 		 */
-//		for (int i=0;true;i++) {
-//			try { 
-//				Socket sc = ss.accept();
-//				System.out.println(MAESTRO + "Cliente " + i + " aceptado.");
-//				D d = new D(sc,i);
-//				d.start();
-//			} catch (IOException e) {
-//				System.out.println(MAESTRO + "Error creando el socket cliente.");
-//				e.printStackTrace();
-//			}
-//			
-//		}
-		
-		
+		//		for (int i=0;true;i++) {
+		//			try { 
+		//				Socket sc = ss.accept();
+		//				System.out.println(MAESTRO + "Cliente " + i + " aceptado.");
+		//				D d = new D(sc,i);
+		//				d.start();
+		//			} catch (IOException e) {
+		//				System.out.println(MAESTRO + "Error creando el socket cliente.");
+		//				e.printStackTrace();
+		//			}
+		//			
+		//		}
+
+
 	}
 }

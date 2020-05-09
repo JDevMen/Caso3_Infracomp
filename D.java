@@ -43,6 +43,18 @@ public class D extends Thread {
 	private static File file;
 	public static final int numCadenas = 13;
 
+	//Cambiar socket del servidor delegado
+	public void cambiarSocket(Socket pSc)
+	{
+		sc = pSc;
+	}
+	
+	public boolean noHaySocket()
+	{
+		return sc ==null;
+	}
+	
+	
 	//Define lo básico del servidor para manejar criptografía con el cliente
 	public static void init(X509Certificate pCertSer, KeyPair pKeyPairServidor, File pFile) {
 		certSer = pCertSer;

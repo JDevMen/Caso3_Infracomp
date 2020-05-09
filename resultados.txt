@@ -1,39 +1,26 @@
 delegado 0: recibio-HOLA-continuando.
-delegado 0: recibio-ALGORITMOS:Blowfish:RSA:HMACSHA1-continuando.
+delegado 0: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
 delegado 0: envio-OK-continuando.
 delegado 0: recibio-certificado del cliente. continuando.
 delegado 0: envio-OK-continuando.
 delegado 0: envio- certificado del servidor. continuando.
 delegado 0: recibio-OK-continuando.
 delegado 0: envio-llave K_SC al cliente. continuado.
-delegado 0: envio-1240-reto al cliente. continuando 
-delegado 0: recibio-1240-reto correcto. continuado.
+delegado 0: envio-9710-reto al cliente. continuando 
+delegado 0: recibio-9710-reto correcto. continuado.
 delegado 0: recibio-MTgxMQ==-continuando
-delegado 0: envio-1343-cifrado con K_SC. continuado.
+delegado 0: envio-1917-cifrado con K_SC. continuado.
 delegado 0: recibio-OK-Terminando exitosamente.
-delegado 2: recibio-HOLA-continuando.
-delegado 2: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
-delegado 2: envio-OK-continuando.
-delegado 2: recibio-certificado del cliente. continuando.
-delegado 2: envio-OK-continuando.
-delegado 2: envio- certificado del servidor. continuando.
-delegado 2: recibio-OK-continuando.
-delegado 2: envio-llave K_SC al cliente. continuado.
-delegado 2: envio-8400-reto al cliente. continuando 
-delegado 2: recibio-8400-reto correcto. continuado.
-delegado 2: recibio-MTgxMQ==-continuando
-delegado 2: envio-1345-cifrado con K_SC. continuado.
-delegado 2: recibio-OK-Terminando exitosamente.
-delegado 4: recibio-HOLA-continuando.
-delegado 4: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
-delegado 4: envio-OK-continuando.
-delegado 4: recibio-certificado del cliente. continuando.
-delegado 4: envio-OK-continuando.
-delegado 4: envio- certificado del servidor. continuando.
-delegado 4: recibio-OK-continuando.
-delegado 4: envio-llave K_SC al cliente. continuado.
-delegado 4: envio-3890-reto al cliente. continuando 
-delegado 4: recibio-3890-reto correcto. continuado.
-delegado 4: recibio-MTgxMQ==-continuando
-delegado 4: envio-1345-cifrado con K_SC. continuado.
-delegado 4: recibio-OK-Terminando exitosamente.
+delegado 1: recibio-HOLA-continuando.
+delegado 1: recibio-ALGORITMOS:Blowfish:RSA:HMACSHA512-continuando.
+delegado 1: envio-OK-continuando.
+delegado 1: recibio-certificado del cliente. continuando.
+delegado 1: envio-OK-continuando.
+delegado 1: envio- certificado del servidor. continuando.
+delegado 1: recibio-OK-continuando.
+delegado 1: envio-llave K_SC al cliente. continuado.
+delegado 1: envio-8350-reto al cliente. continuando 
+delegado 1: recibio-8350-reto correcto. continuado.
+delegado 1: recibio-MTgxMQ==-continuando
+delegado 1: envio-1918-cifrado con K_SC. continuado.
+delegado 1: recibio-OK-Terminando exitosamente.

@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
 
 /*
  * Clase principal, esta es la clase que tiene el ejecutable
@@ -29,13 +30,13 @@ public class C {
 	 */
 	public static void main(String[] args) throws Exception{
 		// Se inicializa el reader y el writer, además define el puerto de comunicación
-		
-
-		System.out.println(MAESTRO + "Establezca puerto de conexion:");
+		System.out.println("Cuantos servidores delegados quiere?");
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
+		int cantServidores = Integer.parseInt(br.readLine());
+		System.out.println(MAESTRO + "Establezca puerto de conexion:");
 		int ip = Integer.parseInt(br.readLine());
-		System.out.println(MAESTRO + "Empezando servidor maestro en puerto " + ip);
+		System.out.println(MAESTRO + "Empezando servidor maestro en puerto " + ip+", con "+cantServidores+" servidores delegados.");
 		// Adiciona la libreria como un proveedor de seguridad.
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());		
 
@@ -59,21 +60,61 @@ public class C {
 		System.out.println(MAESTRO + "Socket creado.");
         
 		
-		/*(
-		 * Aquí se crean los threads delegados. 
-		 * Esto lo tenemos que modificar para que sea un pool de threads
-		 * como en el CASO 1
+		ArrayList<D> listaServDelegados = new ArrayList<>();
+		
+		/*
+		 * Ciclo para crear los servidores delegados
 		 */
-		for (int i=0;true;i++) {
+		
+		for (int i = 0; i < cantServidores-1; i++) 
+		{
+			D d = new D(null,i);
+			listaServDelegados.add(d);
+		}
+		
+		/*
+		 * Aquí estoy poniendo el ciclo para aceptar conexiones a los servidores delegados
+		 */
+		while(true)
+		{
 			try { 
+				boolean aceptado = false;
 				Socket sc = ss.accept();
-				System.out.println(MAESTRO + "Cliente " + i + " aceptado.");
-				D d = new D(sc,i);
-				d.start();
+				for (int i = 0; i < listaServDelegados.size() && !aceptado; i++) 
+				{
+					D delegado = listaServDelegados.get(i);
+					if(delegado.noHaySocket())
+					{
+						System.out.println(MAESTRO + "Cliente " + i + " aceptado.");
+						delegado.cambiarSocket(sc);
+						delegado.run();
+						aceptado = true;
+					}
+				}
+
 			} catch (IOException e) {
 				System.out.println(MAESTRO + "Error creando el socket cliente.");
 				e.printStackTrace();
 			}
 		}
+		/*(
+		 * Aquí se crean los threads delegados. 
+		 * Esto lo tenemos que modificar para que sea un pool de threads
+		 * como en el CASO 1
+		 */
+//		for (int i=0;true;i++) {
+//			try { 
+//				Socket sc = ss.accept();
+//				System.out.println(MAESTRO + "Cliente " + i + " aceptado.");
+//				D d = new D(sc,i);
+//				d.start();
+//			} catch (IOException e) {
+//				System.out.println(MAESTRO + "Error creando el socket cliente.");
+//				e.printStackTrace();
+//			}
+//			
+//		}
+		
+		
 	}
 }

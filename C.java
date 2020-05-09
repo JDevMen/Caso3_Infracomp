@@ -84,7 +84,7 @@ public class C {
 				Socket sc = ss.accept();
 				D dingo = new D(sc,i);
 				deadpools.execute(dingo);
-				System.out.println(MAESTRO + "Cliente "  + "aceptado.");
+				System.out.println(MAESTRO + "Cliente aceptado.");
 
 			} catch (IOException e) {
 				System.out.println(MAESTRO + "Error creando el socket cliente.");

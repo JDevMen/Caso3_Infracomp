@@ -9,11 +9,17 @@ import java.net.Socket;
 import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 import com.opencsv.CSVWriter;
+
+import javafx.util.converter.LocalDateTimeStringConverter;
+import sun.util.resources.LocaleData;
 
 /*
  * Clase principal, esta es la clase que tiene el ejecutable
@@ -44,13 +50,20 @@ public class C {
 		// Adiciona la libreria como un proveedor de seguridad.
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());		
 
+		
+		//Hora de la prueba
+		
+		long ts = System.currentTimeMillis();
+		LocalDateTime fecha = LocalDateTime.now();
+		String hora = Integer.toString(fecha.getHour());
+		String minuto = Integer.toString(fecha.getMinute());
 		// Crea el archivo de log
 		File file = null;
 		File csvFile = null;
 		keyPairServidor = S.grsa();
 		certSer = S.gc(keyPairServidor); 
 		String ruta = "./resultados.txt";
-		String rutaCsv = "./resultadosCSV.csv";
+		String rutaCsv = "./resultadosCSV"+hora+"-"+minuto+".csv";
 
 		file = new File(ruta);
 		if (!file.exists()) {

@@ -6,47 +6,8 @@ delegado 0: envio-OK-continuando.
 delegado 0: envio- certificado del servidor. continuando.
 delegado 0: recibio-OK-continuando.
 delegado 0: envio-llave K_SC al cliente. continuado.
-delegado 0: envio-1160-reto al cliente. continuando 
-delegado 0: recibio-1160-reto correcto. continuado.
+delegado 0: envio-4380-reto al cliente. continuando 
+delegado 0: recibio-4380-reto correcto. continuado.
 delegado 0: recibio-MTgxMQ==-continuando
-delegado 0: envio-1826-cifrado con K_SC. continuado.
+delegado 0: envio-2316-cifrado con K_SC. continuado.
 delegado 0: recibio-OK-Terminando exitosamente.
-delegado 1: recibio-HOLA-continuando.
-delegado 1: recibio-ALGORITMOS:AES:RSA:HMACSHA256-continuando.
-delegado 1: envio-OK-continuando.
-delegado 1: recibio-certificado del cliente. continuando.
-delegado 1: envio-OK-continuando.
-delegado 1: envio- certificado del servidor. continuando.
-delegado 1: recibio-OK-continuando.
-delegado 1: envio-llave K_SC al cliente. continuado.
-delegado 1: envio-2060-reto al cliente. continuando 
-delegado 1: recibio-2060-reto correcto. continuado.
-delegado 1: recibio-MTgxMQ==-continuando
-delegado 1: envio-1826-cifrado con K_SC. continuado.
-delegado 1: recibio-OK-Terminando exitosamente.
-delegado 5: recibio-HOLA-continuando.
-delegado 5: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
-delegado 5: envio-OK-continuando.
-delegado 5: recibio-certificado del cliente. continuando.
-delegado 5: envio-OK-continuando.
-delegado 5: envio- certificado del servidor. continuando.
-delegado 5: recibio-OK-continuando.
-delegado 5: envio-llave K_SC al cliente. continuado.
-delegado 5: envio-5840-reto al cliente. continuando 
-delegado 5: recibio-5840-reto correcto. continuado.
-delegado 5: recibio-MTgxMQ==-continuando
-delegado 5: envio-1827-cifrado con K_SC. continuado.
-delegado 5: recibio-OK-Terminando exitosamente.
-delegado 7: recibio-HOLA-continuando.
-delegado 7: recibio-ALGORITMOS:Blowfish:RSA:HMACSHA384-continuando.
-delegado 7: envio-OK-continuando.
-delegado 7: recibio-certificado del cliente. continuando.
-delegado 7: envio-OK-continuando.
-delegado 7: envio- certificado del servidor. continuando.
-delegado 7: recibio-OK-continuando.
-delegado 7: envio-llave K_SC al cliente. continuado.
-delegado 7: envio-5100-reto al cliente. continuando 
-delegado 7: recibio-5100-reto correcto. continuado.
-delegado 7: recibio-MTgxMQ==-continuando
-delegado 7: envio-1827-cifrado con K_SC. continuado.
-delegado 7: recibio-OK-Terminando exitosamente.

@@ -13,6 +13,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
+import com.opencsv.CSVWriter;
+
 /*
  * Clase principal, esta es la clase que tiene el ejecutable
  * Aquí se genera inicializa el puerto que va a usar para comunicarse
@@ -44,18 +46,34 @@ public class C {
 
 		// Crea el archivo de log
 		File file = null;
+		File csvFile = null;
 		keyPairServidor = S.grsa();
 		certSer = S.gc(keyPairServidor); 
 		String ruta = "./resultados.txt";
+		String rutaCsv = "./resultadosCSV.csv";
 
 		file = new File(ruta);
 		if (!file.exists()) {
 			file.createNewFile();
 		}
+		
+		csvFile = new File (rutaCsv);
+		if(!csvFile.exists())
+		{
+			csvFile.createNewFile();
+		}
+		
 		FileWriter fw = new FileWriter(file);
 		fw.close();
+		
+		FileWriter fwCsv = new FileWriter(csvFile);
+		System.out.println("Aquí cree el triple perro csv ");
+		CSVWriter writerCsv = new CSVWriter(fwCsv);
+		String[] header = { "Cliente", "Tiempo respuesta", "Uso CPU", "Transacciones perdidas" };
+		writerCsv.writeNext(header);
+		writerCsv.close();
 
-		D.init(certSer, keyPairServidor,file);
+		D.init(certSer, keyPairServidor,file,csvFile);
 
 		// Crea el socket que escucha en el puerto seleccionado.
 		ss = new ServerSocket(ip);

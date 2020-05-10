@@ -6,15 +6,23 @@ import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.management.ManagementFactory;
 import java.net.Socket;
 import java.security.KeyPair;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
 
 import javax.crypto.SecretKey;
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 import javax.xml.bind.DatatypeConverter;
+
+import com.opencsv.CSVWriter;
 
 /*
  * En esta clase se define el protocolo con el que se comunica el servidor 
@@ -41,8 +49,11 @@ public class D implements Runnable {
 	private static X509Certificate certSer;
 	private static KeyPair keyPairServidor;
 	private static File file;
+	private static File fileCsv;
 	public static final int numCadenas = 13;
 	private long id = 0;
+	private String[] datos = new String[4];
+	private ArrayList<Double> usoCPU = new ArrayList<>();
 
 	//Cambiar socket del servidor delegado
 	public void cambiarSocket(Socket pSc)
@@ -57,10 +68,11 @@ public class D implements Runnable {
 
 
 	//Define lo básico del servidor para manejar criptografía con el cliente
-	public static void init(X509Certificate pCertSer, KeyPair pKeyPairServidor, File pFile) {
+	public static void init(X509Certificate pCertSer, KeyPair pKeyPairServidor, File pFile, File pFileCsv) {
 		certSer = pCertSer;
 		keyPairServidor = pKeyPairServidor;
 		file = pFile;
+		fileCsv = pFileCsv;
 	}
 
 	/*
@@ -119,6 +131,19 @@ public class D implements Runnable {
 		}
 
 	}
+	
+	private void escribirMensajeCSV(String[] pCadena) {
+
+		try {
+			FileWriter fw = new FileWriter(fileCsv,true);
+			CSVWriter writer = new CSVWriter(fw);
+			writer.writeNext(pCadena);
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	/*
 	 * Método run, tu deberías acordarte pero sino lo que tiene es el hilo de 
@@ -127,16 +152,23 @@ public class D implements Runnable {
 	 * @see java.lang.Thread#run()
 	 */
 	public void run() {
+		
 		String[] cadenas;
 		cadenas = new String[numCadenas];
 
+		//variable toma de datos
+		long tiempoInicio = 0;
+		long tiempoFin = 0;
+		long tiempoTransaccion = 0;
+		int  transaccionTerminada = 0;
+		
 		String linea;
 		System.out.println(dlg + "Empezando atencion.");
 		try {
 
 			PrintWriter ac = new PrintWriter(sc.getOutputStream() , true);
 			BufferedReader dc = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-
+			usoCPU.add(getSystemCpuLoad());
 			/***** Fase 1:  *****/
 			//Esta es la parte de conexión inicial con el cliente
 			linea = dc.readLine();
@@ -149,7 +181,7 @@ public class D implements Runnable {
 				cadenas[0] = dlg + REC + linea + "-continuando.";
 				System.out.println(cadenas[0]);
 			}
-
+			
 			/***** Fase 2:  *****/
 			/* Empieza lo bueno, recibe los algoritmos para llaves
 			 * simétrica, asimétrica y el hash
@@ -186,7 +218,8 @@ public class D implements Runnable {
 			ac.println(OK);
 			cadenas[2] = dlg + ENVIO + OK + "-continuando.";
 			System.out.println(cadenas[2]);
-
+			
+			 tiempoInicio = System.currentTimeMillis();
 
 			/***** Fase 3: Recibe certificado del cliente *****/				
 			String strCertificadoCliente = dc.readLine();
@@ -200,7 +233,7 @@ public class D implements Runnable {
 			ac.println(OK);
 			cadenas[4] = dlg + ENVIO + OK + "-continuando.";
 			System.out.println(cadenas[4]);
-
+			usoCPU.add(getSystemCpuLoad());
 			/*
 			 * De aquí en adelante las fases son claras,
 			 * si algo te confunde revisa el protocolo del caso 2
@@ -257,7 +290,7 @@ public class D implements Runnable {
 				sc.close();
 				throw new Exception(dlg + REC + strdelcliente + "-ERROR en reto. terminando");
 			}
-
+			usoCPU.add(getSystemCpuLoad());
 			/***** Fase 7: Recibe identificador de usuario *****/
 			linea = dc.readLine();
 			byte[] retoByte = toByteArray(linea);
@@ -290,6 +323,10 @@ public class D implements Runnable {
 				cadenas[12] = dlg + REC + linea + "-Terminando con error";
 				System.out.println(cadenas[12]);
 			}
+			 tiempoFin = System.currentTimeMillis();
+			
+			tiempoTransaccion = tiempoFin - tiempoInicio;
+			usoCPU.add(getSystemCpuLoad());
 			sc.close();
 			
 			synchronized (file) {
@@ -299,10 +336,44 @@ public class D implements Runnable {
 				file.notify();
 			}
 			
-
 		} catch (Exception e) {
+			
+			transaccionTerminada =1;
+			if(tiempoInicio==0)
+			{
+				tiempoTransaccion =0;
+			}else
+			{
+				tiempoFin = System.currentTimeMillis();
+				tiempoTransaccion = tiempoFin - tiempoInicio;
+			}
+			try {
+				usoCPU.add(getSystemCpuLoad());
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			System.out.println("Se desconecto esta mierda :(");
 			e.printStackTrace();
 		}
+		
+		
+		synchronized (fileCsv) {
+			datos[0]= Long.toString(getId());
+			datos[1]= Long.toString(tiempoTransaccion);
+			datos[2]= Double.toString(cargaCPU(usoCPU));
+			datos[3]= Integer.toString(transaccionTerminada);
+			escribirMensajeCSV(datos);
+			fileCsv.notify();
+		}
+	}
+	
+	public double cargaCPU(ArrayList<Double>pCarga)
+	{
+		double mayor = -1;
+		for (int i = 0; i < pCarga.size(); i++) {
+			if(pCarga.get(i)>mayor)mayor=pCarga.get(i);
+		}
+		return mayor;
 	}
 
 	public static String toHexString(byte[] array) {
@@ -312,5 +383,17 @@ public class D implements Runnable {
 	public static byte[] toByteArray(String s) {
 		return DatatypeConverter.parseBase64Binary(s);
 	}
-
+	
+	public double getSystemCpuLoad() throws Exception {
+		MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
+		ObjectName name = ObjectName.getInstance("java.lang:type=OperatingSystem");
+		AttributeList list = mbs.getAttributes(name, new String[]{ "SystemCpuLoad" });
+		if (list.isEmpty()) return Double.NaN;
+		Attribute att = (Attribute)list.get(0);
+		Double value = (Double)att.getValue();
+		// usually takes a couple of seconds before we get real values
+		if (value == -1.0) return Double.NaN;
+		// returns a percentage value with 1 decimal point precision
+		return value*100.00;
+		}
 }

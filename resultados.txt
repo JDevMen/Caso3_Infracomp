@@ -1,3 +1,16 @@
+delegado 1: recibio-HOLA-continuando.
+delegado 1: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 1: envio-OK-continuando.
+delegado 1: recibio-certificado del cliente. continuando.
+delegado 1: envio-OK-continuando.
+delegado 1: envio- certificado del servidor. continuando.
+delegado 1: recibio-OK-continuando.
+delegado 1: envio-llave K_SC al cliente. continuado.
+delegado 1: envio-4580-reto al cliente. continuando 
+delegado 1: recibio-4580-reto correcto. continuado.
+delegado 1: recibio-MTgxMQ==-continuando
+delegado 1: envio-1631-cifrado con K_SC. continuado.
+delegado 1: recibio-OK-Terminando exitosamente.
 delegado 0: recibio-HOLA-continuando.
 delegado 0: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
 delegado 0: envio-OK-continuando.
@@ -6,8 +19,346 @@ delegado 0: envio-OK-continuando.
 delegado 0: envio- certificado del servidor. continuando.
 delegado 0: recibio-OK-continuando.
 delegado 0: envio-llave K_SC al cliente. continuado.
-delegado 0: envio-9890-reto al cliente. continuando 
-delegado 0: recibio-9890-reto correcto. continuado.
+delegado 0: envio-1740-reto al cliente. continuando 
+delegado 0: recibio-1740-reto correcto. continuado.
 delegado 0: recibio-MTgxMQ==-continuando
-delegado 0: envio-2319-cifrado con K_SC. continuado.
+delegado 0: envio-1631-cifrado con K_SC. continuado.
 delegado 0: recibio-OK-Terminando exitosamente.
+delegado 2: recibio-HOLA-continuando.
+delegado 2: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 2: envio-OK-continuando.
+delegado 2: recibio-certificado del cliente. continuando.
+delegado 2: envio-OK-continuando.
+delegado 2: envio- certificado del servidor. continuando.
+delegado 2: recibio-OK-continuando.
+delegado 2: envio-llave K_SC al cliente. continuado.
+delegado 2: envio-8930-reto al cliente. continuando 
+delegado 2: recibio-8930-reto correcto. continuado.
+delegado 2: recibio-MTgxMQ==-continuando
+delegado 2: envio-1631-cifrado con K_SC. continuado.
+delegado 2: recibio-OK-Terminando exitosamente.
+delegado 3: recibio-HOLA-continuando.
+delegado 3: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 3: envio-OK-continuando.
+delegado 3: recibio-certificado del cliente. continuando.
+delegado 3: envio-OK-continuando.
+delegado 3: envio- certificado del servidor. continuando.
+delegado 3: recibio-OK-continuando.
+delegado 3: envio-llave K_SC al cliente. continuado.
+delegado 3: envio-7810-reto al cliente. continuando 
+delegado 3: recibio-7810-reto correcto. continuado.
+delegado 3: recibio-MTgxMQ==-continuando
+delegado 3: envio-1631-cifrado con K_SC. continuado.
+delegado 3: recibio-OK-Terminando exitosamente.
+delegado 4: recibio-HOLA-continuando.
+delegado 4: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 4: envio-OK-continuando.
+delegado 4: recibio-certificado del cliente. continuando.
+delegado 4: envio-OK-continuando.
+delegado 4: envio- certificado del servidor. continuando.
+delegado 4: recibio-OK-continuando.
+delegado 4: envio-llave K_SC al cliente. continuado.
+delegado 4: envio-2200-reto al cliente. continuando 
+delegado 4: recibio-2200-reto correcto. continuado.
+delegado 4: recibio-MTgxMQ==-continuando
+delegado 4: envio-1631-cifrado con K_SC. continuado.
+delegado 4: recibio-OK-Terminando exitosamente.
+delegado 5: recibio-HOLA-continuando.
+delegado 5: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 5: envio-OK-continuando.
+delegado 5: recibio-certificado del cliente. continuando.
+delegado 5: envio-OK-continuando.
+delegado 5: envio- certificado del servidor. continuando.
+delegado 5: recibio-OK-continuando.
+delegado 5: envio-llave K_SC al cliente. continuado.
+delegado 5: envio-7590-reto al cliente. continuando 
+delegado 5: recibio-7590-reto correcto. continuado.
+delegado 5: recibio-MTgxMQ==-continuando
+delegado 5: envio-1631-cifrado con K_SC. continuado.
+delegado 5: recibio-OK-Terminando exitosamente.
+delegado 6: recibio-HOLA-continuando.
+delegado 6: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 6: envio-OK-continuando.
+delegado 6: recibio-certificado del cliente. continuando.
+delegado 6: envio-OK-continuando.
+delegado 6: envio- certificado del servidor. continuando.
+delegado 6: recibio-OK-continuando.
+delegado 6: envio-llave K_SC al cliente. continuado.
+delegado 6: envio-7300-reto al cliente. continuando 
+delegado 6: recibio-7300-reto correcto. continuado.
+delegado 6: recibio-MTgxMQ==-continuando
+delegado 6: envio-1631-cifrado con K_SC. continuado.
+delegado 6: recibio-OK-Terminando exitosamente.
+delegado 7: recibio-HOLA-continuando.
+delegado 7: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 7: envio-OK-continuando.
+delegado 7: recibio-certificado del cliente. continuando.
+delegado 7: envio-OK-continuando.
+delegado 7: envio- certificado del servidor. continuando.
+delegado 7: recibio-OK-continuando.
+delegado 7: envio-llave K_SC al cliente. continuado.
+delegado 7: envio-9170-reto al cliente. continuando 
+delegado 7: recibio-9170-reto correcto. continuado.
+delegado 7: recibio-MTgxMQ==-continuando
+delegado 7: envio-1631-cifrado con K_SC. continuado.
+delegado 7: recibio-OK-Terminando exitosamente.
+delegado 8: recibio-HOLA-continuando.
+delegado 8: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 8: envio-OK-continuando.
+delegado 8: recibio-certificado del cliente. continuando.
+delegado 8: envio-OK-continuando.
+delegado 8: envio- certificado del servidor. continuando.
+delegado 8: recibio-OK-continuando.
+delegado 8: envio-llave K_SC al cliente. continuado.
+delegado 8: envio-8870-reto al cliente. continuando 
+delegado 8: recibio-8870-reto correcto. continuado.
+delegado 8: recibio-MTgxMQ==-continuando
+delegado 8: envio-1631-cifrado con K_SC. continuado.
+delegado 8: recibio-OK-Terminando exitosamente.
+delegado 9: recibio-HOLA-continuando.
+delegado 9: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 9: envio-OK-continuando.
+delegado 9: recibio-certificado del cliente. continuando.
+delegado 9: envio-OK-continuando.
+delegado 9: envio- certificado del servidor. continuando.
+delegado 9: recibio-OK-continuando.
+delegado 9: envio-llave K_SC al cliente. continuado.
+delegado 9: envio-2930-reto al cliente. continuando 
+delegado 9: recibio-2930-reto correcto. continuado.
+delegado 9: recibio-MTgxMQ==-continuando
+delegado 9: envio-1631-cifrado con K_SC. continuado.
+delegado 9: recibio-OK-Terminando exitosamente.
+delegado 10: recibio-HOLA-continuando.
+delegado 10: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 10: envio-OK-continuando.
+delegado 10: recibio-certificado del cliente. continuando.
+delegado 10: envio-OK-continuando.
+delegado 10: envio- certificado del servidor. continuando.
+delegado 10: recibio-OK-continuando.
+delegado 10: envio-llave K_SC al cliente. continuado.
+delegado 10: envio-5520-reto al cliente. continuando 
+delegado 10: recibio-5520-reto correcto. continuado.
+delegado 10: recibio-MTgxMQ==-continuando
+delegado 10: envio-1631-cifrado con K_SC. continuado.
+delegado 10: recibio-OK-Terminando exitosamente.
+delegado 11: recibio-HOLA-continuando.
+delegado 11: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 11: envio-OK-continuando.
+delegado 11: recibio-certificado del cliente. continuando.
+delegado 11: envio-OK-continuando.
+delegado 11: envio- certificado del servidor. continuando.
+delegado 11: recibio-OK-continuando.
+delegado 11: envio-llave K_SC al cliente. continuado.
+delegado 11: envio-5020-reto al cliente. continuando 
+delegado 11: recibio-5020-reto correcto. continuado.
+delegado 11: recibio-MTgxMQ==-continuando
+delegado 11: envio-1631-cifrado con K_SC. continuado.
+delegado 11: recibio-OK-Terminando exitosamente.
+delegado 12: recibio-HOLA-continuando.
+delegado 12: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 12: envio-OK-continuando.
+delegado 12: recibio-certificado del cliente. continuando.
+delegado 12: envio-OK-continuando.
+delegado 12: envio- certificado del servidor. continuando.
+delegado 12: recibio-OK-continuando.
+delegado 12: envio-llave K_SC al cliente. continuado.
+delegado 12: envio-5230-reto al cliente. continuando 
+delegado 12: recibio-5230-reto correcto. continuado.
+delegado 12: recibio-MTgxMQ==-continuando
+delegado 12: envio-1631-cifrado con K_SC. continuado.
+delegado 12: recibio-OK-Terminando exitosamente.
+delegado 13: recibio-HOLA-continuando.
+delegado 13: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 13: envio-OK-continuando.
+delegado 13: recibio-certificado del cliente. continuando.
+delegado 13: envio-OK-continuando.
+delegado 13: envio- certificado del servidor. continuando.
+delegado 13: recibio-OK-continuando.
+delegado 13: envio-llave K_SC al cliente. continuado.
+delegado 13: envio-5200-reto al cliente. continuando 
+delegado 13: recibio-5200-reto correcto. continuado.
+delegado 13: recibio-MTgxMQ==-continuando
+delegado 13: envio-1631-cifrado con K_SC. continuado.
+delegado 13: recibio-OK-Terminando exitosamente.
+delegado 14: recibio-HOLA-continuando.
+delegado 14: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 14: envio-OK-continuando.
+delegado 14: recibio-certificado del cliente. continuando.
+delegado 14: envio-OK-continuando.
+delegado 14: envio- certificado del servidor. continuando.
+delegado 14: recibio-OK-continuando.
+delegado 14: envio-llave K_SC al cliente. continuado.
+delegado 14: envio-9240-reto al cliente. continuando 
+delegado 14: recibio-9240-reto correcto. continuado.
+delegado 14: recibio-MTgxMQ==-continuando
+delegado 14: envio-1631-cifrado con K_SC. continuado.
+delegado 14: recibio-OK-Terminando exitosamente.
+delegado 15: recibio-HOLA-continuando.
+delegado 15: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 15: envio-OK-continuando.
+delegado 15: recibio-certificado del cliente. continuando.
+delegado 15: envio-OK-continuando.
+delegado 15: envio- certificado del servidor. continuando.
+delegado 15: recibio-OK-continuando.
+delegado 15: envio-llave K_SC al cliente. continuado.
+delegado 15: envio-3940-reto al cliente. continuando 
+delegado 15: recibio-3940-reto correcto. continuado.
+delegado 15: recibio-MTgxMQ==-continuando
+delegado 15: envio-1631-cifrado con K_SC. continuado.
+delegado 15: recibio-OK-Terminando exitosamente.
+delegado 16: recibio-HOLA-continuando.
+delegado 16: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 16: envio-OK-continuando.
+delegado 16: recibio-certificado del cliente. continuando.
+delegado 16: envio-OK-continuando.
+delegado 16: envio- certificado del servidor. continuando.
+delegado 16: recibio-OK-continuando.
+delegado 16: envio-llave K_SC al cliente. continuado.
+delegado 16: envio-8390-reto al cliente. continuando 
+delegado 16: recibio-8390-reto correcto. continuado.
+delegado 16: recibio-MTgxMQ==-continuando
+delegado 16: envio-1631-cifrado con K_SC. continuado.
+delegado 16: recibio-OK-Terminando exitosamente.
+delegado 17: recibio-HOLA-continuando.
+delegado 17: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 17: envio-OK-continuando.
+delegado 17: recibio-certificado del cliente. continuando.
+delegado 17: envio-OK-continuando.
+delegado 17: envio- certificado del servidor. continuando.
+delegado 17: recibio-OK-continuando.
+delegado 17: envio-llave K_SC al cliente. continuado.
+delegado 17: envio-6170-reto al cliente. continuando 
+delegado 17: recibio-6170-reto correcto. continuado.
+delegado 17: recibio-MTgxMQ==-continuando
+delegado 17: envio-1631-cifrado con K_SC. continuado.
+delegado 17: recibio-OK-Terminando exitosamente.
+delegado 18: recibio-HOLA-continuando.
+delegado 18: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 18: envio-OK-continuando.
+delegado 18: recibio-certificado del cliente. continuando.
+delegado 18: envio-OK-continuando.
+delegado 18: envio- certificado del servidor. continuando.
+delegado 18: recibio-OK-continuando.
+delegado 18: envio-llave K_SC al cliente. continuado.
+delegado 18: envio-8290-reto al cliente. continuando 
+delegado 18: recibio-8290-reto correcto. continuado.
+delegado 18: recibio-MTgxMQ==-continuando
+delegado 18: envio-1631-cifrado con K_SC. continuado.
+delegado 18: recibio-OK-Terminando exitosamente.
+delegado 19: recibio-HOLA-continuando.
+delegado 19: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 19: envio-OK-continuando.
+delegado 19: recibio-certificado del cliente. continuando.
+delegado 19: envio-OK-continuando.
+delegado 19: envio- certificado del servidor. continuando.
+delegado 19: recibio-OK-continuando.
+delegado 19: envio-llave K_SC al cliente. continuado.
+delegado 19: envio-5700-reto al cliente. continuando 
+delegado 19: recibio-5700-reto correcto. continuado.
+delegado 19: recibio-MTgxMQ==-continuando
+delegado 19: envio-1631-cifrado con K_SC. continuado.
+delegado 19: recibio-OK-Terminando exitosamente.
+delegado 20: recibio-HOLA-continuando.
+delegado 20: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 20: envio-OK-continuando.
+delegado 20: recibio-certificado del cliente. continuando.
+delegado 20: envio-OK-continuando.
+delegado 20: envio- certificado del servidor. continuando.
+delegado 20: recibio-OK-continuando.
+delegado 20: envio-llave K_SC al cliente. continuado.
+delegado 20: envio-6000-reto al cliente. continuando 
+delegado 20: recibio-6000-reto correcto. continuado.
+delegado 20: recibio-MTgxMQ==-continuando
+delegado 20: envio-1631-cifrado con K_SC. continuado.
+delegado 20: recibio-OK-Terminando exitosamente.
+delegado 21: recibio-HOLA-continuando.
+delegado 21: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 21: envio-OK-continuando.
+delegado 21: recibio-certificado del cliente. continuando.
+delegado 21: envio-OK-continuando.
+delegado 21: envio- certificado del servidor. continuando.
+delegado 21: recibio-OK-continuando.
+delegado 21: envio-llave K_SC al cliente. continuado.
+delegado 21: envio-3430-reto al cliente. continuando 
+delegado 21: recibio-3430-reto correcto. continuado.
+delegado 21: recibio-MTgxMQ==-continuando
+delegado 21: envio-1631-cifrado con K_SC. continuado.
+delegado 21: recibio-OK-Terminando exitosamente.
+delegado 22: recibio-HOLA-continuando.
+delegado 22: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 22: envio-OK-continuando.
+delegado 22: recibio-certificado del cliente. continuando.
+delegado 22: envio-OK-continuando.
+delegado 22: envio- certificado del servidor. continuando.
+delegado 22: recibio-OK-continuando.
+delegado 22: envio-llave K_SC al cliente. continuado.
+delegado 22: envio-1860-reto al cliente. continuando 
+delegado 22: recibio-1860-reto correcto. continuado.
+delegado 22: recibio-MTgxMQ==-continuando
+delegado 22: envio-1631-cifrado con K_SC. continuado.
+delegado 22: recibio-OK-Terminando exitosamente.
+delegado 23: recibio-HOLA-continuando.
+delegado 23: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 23: envio-OK-continuando.
+delegado 23: recibio-certificado del cliente. continuando.
+delegado 23: envio-OK-continuando.
+delegado 23: envio- certificado del servidor. continuando.
+delegado 23: recibio-OK-continuando.
+delegado 23: envio-llave K_SC al cliente. continuado.
+delegado 23: envio-8630-reto al cliente. continuando 
+delegado 23: recibio-8630-reto correcto. continuado.
+delegado 23: recibio-MTgxMQ==-continuando
+delegado 23: envio-1632-cifrado con K_SC. continuado.
+delegado 23: recibio-OK-Terminando exitosamente.
+delegado 24: recibio-HOLA-continuando.
+delegado 24: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 24: envio-OK-continuando.
+delegado 24: recibio-certificado del cliente. continuando.
+delegado 24: envio-OK-continuando.
+delegado 24: envio- certificado del servidor. continuando.
+delegado 24: recibio-OK-continuando.
+delegado 24: envio-llave K_SC al cliente. continuado.
+delegado 24: envio-6900-reto al cliente. continuando 
+delegado 24: recibio-6900-reto correcto. continuado.
+delegado 24: recibio-MTgxMQ==-continuando
+delegado 24: envio-1632-cifrado con K_SC. continuado.
+delegado 24: recibio-OK-Terminando exitosamente.
+delegado 25: recibio-HOLA-continuando.
+delegado 25: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 25: envio-OK-continuando.
+delegado 25: recibio-certificado del cliente. continuando.
+delegado 25: envio-OK-continuando.
+delegado 25: envio- certificado del servidor. continuando.
+delegado 25: recibio-OK-continuando.
+delegado 25: envio-llave K_SC al cliente. continuado.
+delegado 25: envio-1670-reto al cliente. continuando 
+delegado 25: recibio-1670-reto correcto. continuado.
+delegado 25: recibio-MTgxMQ==-continuando
+delegado 25: envio-1632-cifrado con K_SC. continuado.
+delegado 25: recibio-OK-Terminando exitosamente.
+delegado 26: recibio-HOLA-continuando.
+delegado 26: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 26: envio-OK-continuando.
+delegado 26: recibio-certificado del cliente. continuando.
+delegado 26: envio-OK-continuando.
+delegado 26: envio- certificado del servidor. continuando.
+delegado 26: recibio-OK-continuando.
+delegado 26: envio-llave K_SC al cliente. continuado.
+delegado 26: envio-7510-reto al cliente. continuando 
+delegado 26: recibio-7510-reto correcto. continuado.
+delegado 26: recibio-MTgxMQ==-continuando
+delegado 26: envio-1632-cifrado con K_SC. continuado.
+delegado 26: recibio-OK-Terminando exitosamente.
+delegado 27: recibio-HOLA-continuando.
+delegado 27: recibio-ALGORITMOS:AES:RSA:HMACSHA1-continuando.
+delegado 27: envio-OK-continuando.
+delegado 27: recibio-certificado del cliente. continuando.
+delegado 27: envio-OK-continuando.
+delegado 27: envio- certificado del servidor. continuando.
+delegado 27: recibio-OK-continuando.
+delegado 27: envio-llave K_SC al cliente. continuado.
+delegado 27: envio-5560-reto al cliente. continuando 
+delegado 27: recibio-5560-reto correcto. continuado.
+delegado 27: recibio-MTgxMQ==-continuando
+delegado 27: envio-1632-cifrado con K_SC. continuado.
+delegado 27: recibio-OK-Terminando exitosamente.

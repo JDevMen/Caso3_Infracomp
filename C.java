@@ -40,12 +40,14 @@ public class C {
 	 */
 	public static void main(String[] args) throws Exception{
 		// Se inicializa el reader y el writer, además define el puerto de comunicación
-		System.out.println("Cuantos servidores delegados quiere?");
-		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader(isr);
-		int cantServidores = Integer.parseInt(br.readLine());
-		System.out.println(MAESTRO + "Establezca puerto de conexion:");
-		int ip = Integer.parseInt(br.readLine());
+//		System.out.println("Cuantos servidores delegados quiere?");
+//		InputStreamReader isr = new InputStreamReader(System.in);
+//		BufferedReader br = new BufferedReader(isr);
+//		int cantServidores = Integer.parseInt(br.readLine());
+		int cantServidores =  1;
+//		System.out.println(MAESTRO + "Establezca puerto de conexion:");
+//		int ip = Integer.parseInt(br.readLine());
+		int ip = 80;
 		System.out.println(MAESTRO + "Empezando servidor maestro en puerto " + ip+", con "+cantServidores+" servidores delegados.");
 		// Adiciona la libreria como un proveedor de seguridad.
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());		

@@ -6,8 +6,8 @@ delegado 0: envio-OK-continuando.
 delegado 0: envio- certificado del servidor. continuando.
 delegado 0: recibio-OK-continuando.
 delegado 0: envio-llave K_SC al cliente. continuado.
-delegado 0: envio-4380-reto al cliente. continuando 
-delegado 0: recibio-4380-reto correcto. continuado.
+delegado 0: envio-9890-reto al cliente. continuando 
+delegado 0: recibio-9890-reto correcto. continuado.
 delegado 0: recibio-MTgxMQ==-continuando
-delegado 0: envio-2316-cifrado con K_SC. continuado.
+delegado 0: envio-2319-cifrado con K_SC. continuado.
 delegado 0: recibio-OK-Terminando exitosamente.

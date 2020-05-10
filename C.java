@@ -51,9 +51,14 @@ public class C {
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());		
 
 		
-		//Hora de la prueba
+		//Crear directorio 
+		File directorio = null;
+		directorio = new File("./Datos");
+		if (!directorio.exists()) {
+			directorio.mkdir();
+		}
 		
-		long ts = System.currentTimeMillis();
+		//Hora de la prueba
 		LocalDateTime fecha = LocalDateTime.now();
 		String hora = Integer.toString(fecha.getHour());
 		String minuto = Integer.toString(fecha.getMinute());
@@ -62,8 +67,8 @@ public class C {
 		File csvFile = null;
 		keyPairServidor = S.grsa();
 		certSer = S.gc(keyPairServidor); 
-		String ruta = "./resultados.txt";
-		String rutaCsv = "./resultadosCSV"+hora+"-"+minuto+".csv";
+		String ruta = "./Datos/resultados"+hora+"-"+minuto+".txt";
+		String rutaCsv = "./Datos/resultadosCSV"+hora+"-"+minuto+".csv";
 
 		file = new File(ruta);
 		if (!file.exists()) {

@@ -93,7 +93,7 @@ public class C {
 		writerCsv.writeNext(header);
 		writerCsv.close();
 
-		D.init(certSer, keyPairServidor,file,csvFile);
+		DConSeguridad.init(certSer, keyPairServidor,file,csvFile);
 
 		// Crea el socket que escucha en el puerto seleccionado.
 		ss = new ServerSocket(ip);
@@ -120,7 +120,7 @@ public class C {
 		{
 			try { 
 				Socket sc = ss.accept();
-				D dingo = new D(sc,i);
+				DConSeguridad dingo = new DConSeguridad(sc,i);
 				deadpools.execute(dingo);
 				System.out.println(MAESTRO + "Cliente aceptado.");
 

@@ -29,7 +29,7 @@ import com.opencsv.CSVWriter;
  * con el cliente. 
  * Ante todo es la estructura del thread delegado.
  */
-public class DConSeguridad implements Runnable {
+public class DSinSeguridad implements Runnable {
 	// Constantes de respuesta 
 	public static final String OK = "OK";
 	public static final String ALGORITMOS = "ALGORITMOS";
@@ -80,7 +80,7 @@ public class DConSeguridad implements Runnable {
 	 * se va a comunidar y un id que lo identifique (asignado por el servidor)
 	 * Abrá que hacer ajustes para que el log quede por bloques de cada delegado
 	 */
-	public DConSeguridad (Socket csP, int idP) {
+	public DSinSeguridad (Socket csP, int idP) {
 		sc = csP;
 //		long idP = Thread.currentThread().getId();
 		System.out.println("LLEGUE UNA VEZ " + idP);

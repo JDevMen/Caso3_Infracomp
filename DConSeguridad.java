@@ -256,10 +256,10 @@ public class DConSeguridad implements Runnable {
 
 			/***** Fase 5: Envia llave simetrica *****/
 			SecretKey simetrica = S.kgg(algoritmos[1]);
-			byte [ ] ciphertext1 = S.ae(simetrica.getEncoded(), 
-					certificadoCliente.getPublicKey(), algoritmos[2]);
-			ac.println(toHexString(ciphertext1));
-			cadenas[7] = dlg +  ENVIO + "llave K_SC al cliente. continuado.";
+			String llaveS = simetrica.toString();
+			
+			ac.println(llaveS);
+			cadenas[7] = dlg +  ENVIO + "llave simetrica al cliente. continuado.";
 			System.out.println(cadenas[7]);
 
 			/***** Fase 5: Envia reto *****/
@@ -269,33 +269,26 @@ public class DConSeguridad implements Runnable {
 			while (strReto.length()%4!=0) strReto += "0";
 
 			String reto = strReto;
-			byte[] bytereto = toByteArray(reto);
-			byte [] cipherreto = S.se(bytereto, simetrica, algoritmos[1]);
-			ac.println(toHexString(cipherreto));
+			ac.println(reto);
 			cadenas[8] = dlg + ENVIO + reto + "-reto al cliente. continuando ";
 			System.out.println(cadenas[8]);
 
 			/***** Fase 6: Recibe reto del cliente *****/
 			linea = dc.readLine();
-			byte[] retodelcliente = S.ad(
-					toByteArray(linea), 
-					keyPairServidor.getPrivate(), algoritmos[2] );
-			String strdelcliente = toHexString(retodelcliente);
-			if (strdelcliente.equals(reto)) {
-				cadenas[9] = dlg + REC + strdelcliente + "-reto correcto. continuado.";
+			String retoCliente = linea;
+			if (retoCliente.equals(reto)) {
+				cadenas[9] = dlg + REC + retoCliente + "-reto correcto. continuado.";
 				System.out.println(cadenas[9]);
 				ac.println("OK");
 			} else {
 				ac.println("ERROR");
 				sc.close();
-				throw new Exception(dlg + REC + strdelcliente + "-ERROR en reto. terminando");
+				throw new Exception(dlg + REC + retoCliente + "-ERROR en reto. terminando");
 			}
 			usoCPU.add(getSystemCpuLoad());
 			/***** Fase 7: Recibe identificador de usuario *****/
 			linea = dc.readLine();
-			byte[] retoByte = toByteArray(linea);
-			byte [ ] ciphertext2 = S.sd(retoByte, simetrica, algoritmos[1]);
-			String nombre = toHexString(ciphertext2);
+			String nombre = linea;
 			cadenas[10] = dlg + REC + nombre + "-continuando";
 			System.out.println(cadenas[10]);
 
@@ -308,11 +301,10 @@ public class DConSeguridad implements Runnable {
 				strvalor = "0" + ((hora) * 100 + minuto);
 			else
 				strvalor = ((hora) * 100 + minuto) + "";
-			while (strvalor.length()%4!=0) strvalor = "0" + strvalor;
-			byte[] valorByte = toByteArray(strvalor);
-			byte [ ] ciphertext3 = S.se(valorByte, simetrica, algoritmos[1]);
-			ac.println(toHexString(ciphertext3));
-			cadenas[11] = dlg + ENVIO + strvalor + "-cifrado con K_SC. continuado.";
+			
+			
+			ac.println(strvalor);
+			cadenas[11] = dlg + ENVIO + strvalor + ". continuado.";
 			System.out.println(cadenas[11]);
 
 			linea = dc.readLine();	

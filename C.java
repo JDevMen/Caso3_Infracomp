@@ -44,7 +44,7 @@ public class C {
 //		InputStreamReader isr = new InputStreamReader(System.in);
 //		BufferedReader br = new BufferedReader(isr);
 //		int cantServidores = Integer.parseInt(br.readLine());
-		int cantServidores= 2;
+		int cantServidores= 1;
 //		System.out.println(MAESTRO + "Establezca puerto de conexion:");
 //		int ip = Integer.parseInt(br.readLine());
 		int ip = 80;
